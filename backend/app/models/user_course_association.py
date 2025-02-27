@@ -1,4 +1,4 @@
-from ..extensions import db, ma
+from ..extensions import db
 from sqlalchemy import Integer, String, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 

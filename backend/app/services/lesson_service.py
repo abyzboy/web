@@ -15,13 +15,11 @@ def delete_lesson(id : int) -> None:
     lesson.delete()
 
 def create_lesson(course_id :int, title : str) -> str:
-    try:
-        course : Course = Course.query.get(course_id)
-        lesson : Lesson = Lesson(course_id=course_id, title=title)
-        course.lessons.append(lesson)
-        return jsonify(lesson), 200
-    except Exception as e:
-        return f'{e}'
+    course : Course = Course.query.get(course_id)
+    lesson : Lesson = Lesson(course_id=course_id, title=title)
+    lesson.create()
+    course.lessons.append(lesson)
+    return lesson
 
 
 def add_video(video, lesson : Lesson) -> None:

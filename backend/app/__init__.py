@@ -9,11 +9,10 @@ def create_app(config_class=Config):
     app.config.from_object(config_class)
 
     # Инициализация расширений
-    from app.extensions import db, jwt, bcrypt, cors, ma
+    from app.extensions import db, jwt, bcrypt, cors
     db.init_app(app)
     jwt.init_app(app)
     bcrypt.init_app(app)
-    ma.init_app(app)
     CORS(app)  # Включить CORS для API
     with app.app_context():
         db.create_all()

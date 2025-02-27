@@ -1,7 +1,7 @@
-from ..extensions import db, ma
+from ..extensions import db
 from sqlalchemy import Integer, String, Boolean
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
+
 class User(db.Model):
     id: Mapped[int] = mapped_column(Integer(), primary_key=True)
     email: Mapped[str] = mapped_column(String(50), unique=True, nullable=False)

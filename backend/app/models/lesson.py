@@ -1,7 +1,6 @@
 from ..extensions import db
 from sqlalchemy import Integer, String, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 
 class Lesson(db.Model):
     id : Mapped[int] = mapped_column(Integer(), primary_key=True)

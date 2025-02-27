@@ -28,7 +28,7 @@ class LessonList(Resource):
         title = api.payload["title"]
         return lesson_service.create_lesson(course_id, title), 201
 
-@api.route("/<int:course_id>")
+@api.route("/<int:lesson_id>")
 @api.param("lesson_id", "ID урок")
 class LessonDetail(Resource):
     @api.doc("Получить урок по ID")
