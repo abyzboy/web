@@ -20,6 +20,7 @@ class LessonList(Resource):
 
     @api.doc("Создать курс")
     @api.expect(lesson_model)
+    @api.marshal_with(lesson_model)
     @jwt_required()
     def post(self):
         """Создать новый урок"""
