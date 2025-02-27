@@ -9,7 +9,7 @@ def create_app(config_class=Config):
     app.config.from_object(config_class)
 
     # Инициализация расширений
-    from app.extensions import db, jwt, bcrypt
+    from app.extensions import db, jwt, bcrypt, cors
     db.init_app(app)
     jwt.init_app(app)
     bcrypt.init_app(app)
@@ -18,5 +18,6 @@ def create_app(config_class=Config):
         db.create_all()
     # Регистрация API
     api.init_app(app)
+    cors.init_app(app)
 
     return app

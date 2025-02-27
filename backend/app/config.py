@@ -10,6 +10,8 @@ class Config:
     JWT_HEADER_NAME = "Authorization"    # Название заголовка
     JWT_HEADER_TYPE = "Bearer"            # Тип авторизации (Bearer)
     JWT_VERIFY_SUB=False
+    CORS_ORIGINS = ["http://localhost:3000"]
+
     APPNAME = "app"
     ROOT = os.path.abspath(APPNAME)
     USER = os.environ.get('POSTGRES_USER')
