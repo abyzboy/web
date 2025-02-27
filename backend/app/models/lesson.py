@@ -1,7 +1,7 @@
 from ..extensions import db
 from sqlalchemy import Integer, String, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-
+from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 
 class Lesson(db.Model):
     id : Mapped[int] = mapped_column(Integer(), primary_key=True)
@@ -12,3 +12,11 @@ class Lesson(db.Model):
  
     course_id : Mapped[int] = mapped_column(Integer(), ForeignKey('course.id'))
     course  = relationship('Course', back_populates='lessons', uselist=False)
+
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
+    
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
