@@ -37,7 +37,6 @@ class CourseDetail(Resource):
         return course_service.get_course_by_id(course_id)
 
     @api.doc("Удалить курс")
-    @api.response(204, "Курс удален")
     @jwt_required()
     def delete(self, course_id):
         """Удалить курс"""

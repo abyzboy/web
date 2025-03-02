@@ -14,7 +14,9 @@ def get_all_courses():
 def create_course(title,description, id):
     course = Course(title=title, description=description, author_id=id)
     course.save()
-    return jsonify(schema.dump(course))
+    response = make_response(jsonify(schema.dump(course)))
+    response.status = 201
+    return response
 
 def get_course_by_id(id):
     try:
@@ -30,8 +32,9 @@ def delete_course(id):
     try:
         course : Course = Course.query.get(id)
         course.delete()
-        return jsonify({"status" : 204,
-                        "msg": "Курс удален"})
+        response = make_response(jsonify({"msg": "Курс успешно удален"}))
+        response.status_code = 200
     except Exception as e:
-        return jsonify({"status" : "Error",
-                        "msg" : "Курса такого"})
+        response = make_response(jsonify({"msg": "Курс не был найден"}))
+        response.status_code = 404
+    return response
