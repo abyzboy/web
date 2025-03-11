@@ -16,7 +16,6 @@ user_model = api.model('USER',
 @api.route("/")
 class UserList(Resource):
     @api.doc("Список пользователей")
-    @api.marshal_list_with(user_model)
     def get(self):
         """Получить всех пользователей"""
         return user_service.get_all_users()
@@ -25,15 +24,12 @@ class UserList(Resource):
 @api.param("user_id", "ID user")
 class UserDetail(Resource):
     @api.doc("Получить пользователя ID")
-    @api.marshal_with(user_model)
     def get(self, user_id):
         """Получить user по ID"""
         return user_service.get_user_by_id(user_id)
 
     @api.doc("Удалить user")
-    @api.response(204, "user удален")
     @jwt_required()
     def delete(self, user_id):
         """Удалить user"""
-        user_service.delete_course(user_id)
-        return "", 204
+        return user_service.delete_user(user_id)
