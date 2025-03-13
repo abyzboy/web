@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./main.css">
+  <link rel="stylesheet" href="/reset.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+  <title>Страница курса</title>
+</head>
+<body>
+  <div class="header" id="header">
+      <div class="logo" id = "logo">
+          <a onclick="goToCourses()"><img src="/img/logo.svg" alt="logo"></a>
+      </div>
+      <h1>Школа «Квентин» в Сургуте</h1>
+      <div class="dropdown" id="dropdown">
+          <button class="dropdown-toggle" id="dropdownToggle">
+            <span class="name">Иванов Иван</span>
+            <span class="profile-icon"><img src="/img/user.svg" alt=""></span>
+          </button>
+          <ul class="dropdown-menu" id="dropdownMenu">
+            <li><a onclick="goToCourses()">Курсы</a></li>
+            <li><a onclick="goToProgress()">Прогресс</a></li>
+            <li><a onclick="">Тренажер</a></li>
+            <li><a onclick="">Поддержка</a></li>
+            <li><a onclick="goToRegistrathion()">Выход</a></li>
+          </ul>
+        </div>
+    </div>
+    <main class="container">
+      <aside class="left-sidebar">
+          <h2>Модули</h2>
+          <ul>
+            <li><a href="#" onclick="updateContent('Без слёз не взглянешь', '1.mp4')">1. Без слёз не взглянешь</a></li>
+            <li><a href="#" onclick="updateContent('Лучик солнца в тёмной царстве', '2.mp4')">2. Лучик солнца в тёмной царстве</a></li>
+            <li><a href="#" onclick="updateContent('Дорогой дневник мне не передать..', '3.mp4')">3. Дорогой дневник мне не передать..</a></li>
+            <li><a href="#" onclick="updateContent('Оп оп живём живём', '4.mp4')">4. Оп оп живём живём</a></li>
+            <li><a href="#" onclick="updateContent('Дышим дышим', '5.mp4')">5. Дышим дышим</a></li>
+            <li><a href="#" onclick="updateContent('Забирай балл', '6.mp4')">6. Забирай балл</a></li>
+            <li><a href="#" onclick="updateContent('Откуда это на экзамене???', '7.mp4')">7. Откуда это на экзамене???</a></li>
+            <li><a href="#" onclick="updateContent('Это не сложно!!!', '8.mp4')">8. Это не сложно!!!</a></li>
+            <li><a href="#" onclick="updateContent('Формулы формулы', '9.mp4')">9. Формулы формулы</a></li>
+            <li><a href="#" onclick="updateContent('Текстовая боль', '10.mp4')">10. Текстовая боль</a></li>
+            <li><a href="#" onclick="updateContent('Графики', '11.mp4')">11. Графики</a></li>
+            <li><a href="#" onclick="updateContent('Терпи...', '12.mp4')">12. Терпи...</a></li>
+          </ul>
+      </aside>
+
+      <section class="main-content">
+        <h1 id="theme-title">Название темы</h1>
+
+        <div class="video-container">
+          <video id="myVideo" width="640" height="360">
+            <source src="" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-controls">
+            <button id="playPauseBtn" class="control-button">
+                <i class="fas fa-play"></i>
+            </button>
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1">
+            <button id="fullscreenBtn" class="control-button">
+                <i class="fas fa-expand"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="right-sidebar">
+          <h2>Полезные материалы</h2>
+          <ul>
+              <li><a href="#">Ссылка 1</a></li>
+              <li><a href="#">Ссылка 2</a></li>
+              <li><a href="#">Ссылка 3</a></li>
+              <li>И т.д.</li>
+          </ul>
+      </aside>
+  </main>
+  <script src="/main.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>

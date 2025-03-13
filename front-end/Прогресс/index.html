@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/Прогресс/main.css">
+  <link rel="stylesheet" href="/reset.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Страница курса</title>
+</head>
+<body>
+  <div class="header" id="header">
+      <div class="logo" id = "logo">
+          <a onclick="goToCourses()"><img src="/img/logo.svg" alt="logo"></a>
+      </div>
+      <p>Школа «Квентин» в Сургуте</p>
+      <div class="dropdown" id="dropdown">
+          <button class="dropdown-toggle" id="dropdownToggle">
+            <span class="name">Иванов Иван</span>
+            <span class="profile-icon"><img src="/img/user.svg" alt=""></span>
+          </button>
+          <ul class="dropdown-menu" id="dropdownMenu">
+            <li><a onclick="goToCourses()">Курсы</a></li>
+            <li><a onclick="goToProgress()">Прогресс</a></li>
+            <li><a onclick="">Тренажер</a></li>
+            <li><a onclick="">Поддержка</a></li>
+            <li><a onclick="goToRegistrathion()">Выход</a></li>
+          </ul>
+        </div>
+    </div>
+    <main class="container">
+        <h1>Прогресс</h1>
+
+        <h2>Отмечайте завершенные модули, чтобы видеть свой прогресс</h2>
+
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="modules">
+            <div class="module-card">
+                <h3>Без слёз не взглянешь</h3>
+                <div class="topic-card">
+                    <label>
+                        <input type="checkbox" onchange="updateProgress()">
+                    </label>
+                </div>
+            </div>
+            <div class="module-card">
+                <h3>Лучик солнца в тёмной царстве</h3>
+                <div class="topic-card">
+                    <label>
+                        <input type="checkbox" onchange="updateProgress()">
+                    </label>
+                </div>
+            </div>
+            <div class="module-card">
+                <h3>Дорогой дневник мне не передать...</h3> 
+                <div class="topic-card">
+                    <label>
+                        <input type="checkbox" onchange="updateProgress()">
+                    </label>
+                </div>
+            </div>
+            <div class="module-card">
+                <h3>Оп оп живём живём</h3>
+                <div class="topic-card">
+                    <label>
+                        <input type="checkbox" onchange="updateProgress()">
+                    </label>
+                </div>
+            </div>
+            <div class="module-card">
+                <h3>Дышим дышим</h3>
+                <div class="topic-card">
+                    <label>
+                        <input type="checkbox" onchange="updateProgress()">
+                    </label>
+                </div>
+            </div>
+            <div class="module-card">
+                <h3>Забирай балл</h3>
+                <div class="topic-card">
+                    <label>
+                        <input type="checkbox" onchange="updateProgress()">
+                    </label>
+                </div>
+            </div>
+            <div class="module-card">
+                <h3>Откуда это на экзамене???</h3>
+                <div class="topic-card">
+                    <label>
+                        <input type="checkbox" onchange="updateProgress()">
+                    </label>
+                </div>
+            </div>
+            <div class="module-card">
+                <h3>Это не сложно!!!</h3>
+                <div class="topic-card">
+                    <label>
+                        <input type="checkbox" onchange="updateProgress()">
+                    </label>
+                </div>
+            </div>
+            <div class="module-card">
+                <h3>Формулы формулы</h3>
+                <div class="topic-card">
+                    <label>
+                        <input type="checkbox" onchange="updateProgress()">
+                    </label>
+                </div>
+            </div>
+            <div class="module-card">
+                <h3>Текстовая боль</h3>
+                <div class="topic-card">
+                    <label>
+                        <input type="checkbox" onchange="updateProgress()">
+                    </label>
+                </div>
+            </div>
+            <div class="module-card">
+                <h3>Графики</h3>
+                <div class="topic-card">
+                    <label>
+                        <input type="checkbox" onchange="updateProgress()">
+                    </label>
+                </div>
+            </div>
+            <div class="module-card">
+                <h3>Терпи...</h3>
+                <div class="topic-card">
+                    <label>
+                        <input type="checkbox" onchange="updateProgress()">
+                    </label>
+                </div>
+            </div>
+        </div>
+    </main>
+  <script src="/main.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
