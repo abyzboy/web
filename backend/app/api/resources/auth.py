@@ -21,17 +21,18 @@ class Refresh(Resource):
         new_access_token = create_access_token(identity=current_user_id)
         return {"access_token": new_access_token}, 200
 
-@api.route("/register")
+@api.route("/register", methods=['POST', 'GET'])
 class Register(Resource):
     @api.expect(login_model)
     def post(self):
         """Регистрация пользователя"""
+        print(api)
         email = api.payload["email"]
         username = api.payload["username"]
         password = api.payload["password"]
         return AuthService.register_user(username, email, password), 201
 
-@api.route("/login")
+@api.route("/login", methods=['POST', 'GET'])
 class Login(Resource):
     @api.expect(login_model)
     def post(self):

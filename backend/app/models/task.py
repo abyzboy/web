@@ -11,3 +11,11 @@ class Task(db.Model):
     lesson_id : Mapped[int] = mapped_column(Integer(), ForeignKey('lesson.id'))
 
     lesson = relationship('Lesson', back_populates='tasks', uselist=False)
+
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
+    
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
