@@ -7,7 +7,7 @@
     }
     
     if (video) {
-        const videoSrc = "/Видео/" + video; // Путь к видео
+        const videoSrc = "/front-end/Видео/" + video; // Путь к видео
         const videoPlayer = document.getElementById('myVideo');
         const source = videoPlayer.querySelector('source');
         source.setAttribute('src', videoSrc);
@@ -21,7 +21,7 @@ function updateContent(title, video) {
     document.getElementById('theme-title').textContent = title;
 
     // Обновляем видео
-    const videoSrc = "/Видео/" + video;
+    const videoSrc = "/front-end/Видео/" + video;
     const videoPlayer = document.getElementById('myVideo');
     const source = videoPlayer.querySelector('source');
     source.setAttribute('src', videoSrc);

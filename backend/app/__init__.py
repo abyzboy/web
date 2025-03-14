@@ -5,6 +5,7 @@ from .api.routes import api
 
 def create_app(config_class=Config):
     app = Flask(__name__)
+    CORS(app)  # Включить CORS для API
     app.config.from_object(config_class)
 
     # Инициализация расширений
@@ -13,7 +14,6 @@ def create_app(config_class=Config):
     ma.init_app(app)
     jwt.init_app(app)
     bcrypt.init_app(app)
-    CORS(app)  # Включить CORS для API
     with app.app_context():
         db.create_all()
     # Регистрация API

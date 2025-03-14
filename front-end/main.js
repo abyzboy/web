@@ -15,21 +15,29 @@ window.addEventListener("click", (event) => {
 });
 
 function goToMathCourse() {
-    window.location.href = "/Page_math_course_70/index.html"; 
+    window.location.href = "/front-end/Page_math_course_70/index.html"; 
 }
 
 function goToProgress() {
-    window.location.href = "/Прогресс/index.html"; 
+    window.location.href = "/front-end/Прогресс/index.html"; 
 }
 
 function goToCoursePage() {
-    window.location.href = "/Страница_темы/index.html"; 
+    window.location.href = "/front-end/Страница_темы/index.html"; 
 }
 
 function goToRegistrathion() {
-    window.location.href = "/Registrathion/index.html"; 
+    window.location.href = "/front-end/Registrathion/index.html"; 
 }
 
 function goToCourses() {
-  window.location.href = "/Курсы/index.html"; 
+  window.location.href = "/front-end/Курсы/index.html"; 
+}
+
+function goToSupport() {
+  window.location.href = "/front-end/Поддержка/index.html"; 
+}
+
+function goToAdmin() {
+  window.location.href = "/front-end/admin_page/index.html"; 
 }

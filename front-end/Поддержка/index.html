@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница поддержки</title>
+    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="/front-end/reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <div class="header" id="header">
+        <div class="logo" id = "logo">
+            <a onclick="goToCourses()"><img src="/front-end/img/logo.svg" alt="logo"></a>
+        </div>
+        <h2>Школа «Квентин» в Сургуте</h2>
+        <div class="dropdown" id="dropdown">
+            <button class="dropdown-toggle" id="dropdownToggle">
+                <span class="name">Иванов Иван</span>
+                <span class="profile-icon"><img src="/front-end/img/user.svg" alt=""></span>
+            </button>
+            <ul class="dropdown-menu" id="dropdownMenu">
+                <li><a onclick="">Курсы</a></li>
+                <li><a onclick="goToProgress()">Прогресс</a></li>
+                <li><a onclick="">Тренажер</a></li>
+                <li><a onclick="">Поддержка</a></li>
+                <li><a onclick="goToRegistrathion()">Выход</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main class="container">
+        <h1>Свяжитесь с нами</h1>
+        <div class="grid-container">
+            <div class="grid-item">
+                <span class="icon"><i class="fas fa-phone"></i></span>
+                <p>Телефон</p>
+                <p class="contact-info">+7 (123) 456-78-90</p>
+            </div>
+            <div class="grid-item">
+                <span class="icon"><i class="fas fa-envelope"></i></span>
+                <p>Электронная почта</p>
+                <p class="contact-info">support@example.com</p>
+            </div>
+            <div class="grid-item">
+                <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                <p>Адрес</p>
+                <p class="contact-info">ул. Примерная, д. 10, г. Сургут</p>
+            </div>
+            <div class="grid-item">
+                <span class="icon"><i class="fas fa-clock"></i></span>
+                <p>Часы работы</p>
+                <p class="contact-info">Пн-Пт: 9:00 - 18:00</p>
+            </div>
+            <div class="grid-item">
+                <span class="icon"><i class="fab fa-vk"></i></span>
+                <p>ВКонтакте</p>
+                <p class="contact-info">vk.com/example</p>
+            </div>
+            <div class="grid-item">
+                <span class="icon"><i class="fab fa-instagram"></i></span>
+                <p>Instagram</p>
+                <p class="contact-info">instagram.com/example</p>
+            </div>
+            <div class="grid-item">
+                <span class="icon"><i class="fab fa-telegram"></i></span>
+                <p>Telegram</p>
+                <p class="contact-info">t.me/example</p>
+            </div>
+            <div class="grid-item">
+                <span class="icon"><i class="fab fa-whatsapp"></i></span>
+                <p>WhatsApp</p>
+                <p class="contact-info">+7 (987) 654-32-10</p>
+            </div>
+        </div>
+    </main>
+    <script src="/front-end/main.js" ></script>
+    <script src="./script.js" ></script>
+</body>
+</html>

@@ -5,5 +5,5 @@
   localStorage.setItem('selectedTitle', title); // Сохраняем заголовок в localStorage
   localStorage.setItem('selectedVideo', video);
   
-  window.location.href = "/Страница_темы/index.html"; // Переходим на другую страницу
+  window.location.href = "/front-end/Страница_темы/index.html"; // Переходим на другую страницу
 }

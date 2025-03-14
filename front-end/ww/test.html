@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask + JS</title>
+</head>
+<body>
+    <h1 class="title" id="title-h1"></h1>
+    <div id="tasks"></div>
+    <input type="text" id="taskInput">
+    <button onclick="createTask()">Добавить</button>
+
+    <script>
+        // Загрузить задачи при загрузке страницы
+        fetch('http://localhost:5000/api/v1/test/data')
+            .then(response => response.json())
+            .then(data => {
+                const tasksDiv = document.getElementById('tasks');
+                // Предполагаем, что 'message' это строка
+                tasksDiv.innerHTML = `<div>${data.message}</div>`;
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+
+    </script>
+</body>
+</html>
