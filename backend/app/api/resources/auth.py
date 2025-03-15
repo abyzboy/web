@@ -11,7 +11,7 @@ login_model = api.model("Login", {
     "password": fields.String(required=True),
 })
 
-register_model = api.model("Login", {
+register_model = api.model("Register", {
     "email": fields.String(required=True),
     "password": fields.String(required=True),
     "username": fields.String(required=True)
@@ -33,11 +33,9 @@ class Register(Resource):
     @api.expect(register_model)
     def post(self):
         """Регистрация пользователя"""
-        d = request.get_json()
-        print(d)
-        email = d["email"]
-        username = d["username"]
-        password = d["password"]
+        email = api.payload["email"]
+        username = api.payload["username"]
+        password = api.payload["password"]
         return AuthService.register_user(username, email, password), 201
 
 @api.route("/login", methods=['POST', 'GET'])
