@@ -1,6 +1,7 @@
 from flask_restx import Namespace, Resource, fields
 from flask_jwt_extended import jwt_required, create_access_token, get_jwt_identity
 from app.services.auth_service import AuthService
+from flask import request
 
 api = Namespace("auth", description="Аутентификация и регистрация")
 
@@ -8,8 +9,14 @@ api = Namespace("auth", description="Аутентификация и регис�
 login_model = api.model("Login", {
     "email": fields.String(required=True),
     "password": fields.String(required=True),
+})
+
+register_model = api.model("Login", {
+    "email": fields.String(required=True),
+    "password": fields.String(required=True),
     "username": fields.String(required=True)
 })
+
 
 @api.route("/refresh")
 class Refresh(Resource):
@@ -23,13 +30,14 @@ class Refresh(Resource):
 
 @api.route("/register", methods=['POST', 'GET'])
 class Register(Resource):
-    @api.expect(login_model)
+    @api.expect(register_model)
     def post(self):
         """Регистрация пользователя"""
-        print(api)
-        email = api.payload["email"]
-        username = api.payload["username"]
-        password = api.payload["password"]
+        d = request.get_json()
+        print(d)
+        email = d["email"]
+        username = d["username"]
+        password = d["password"]
         return AuthService.register_user(username, email, password), 201
 
 @api.route("/login", methods=['POST', 'GET'])
