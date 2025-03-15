@@ -1,6 +1,7 @@
 from app.models.user import User
 from app.utils.security import hash_password, check_password
 from flask_jwt_extended import create_access_token, create_refresh_token
+from app.extensions import jwt
 
 class AuthService:
     @staticmethod
@@ -11,7 +12,13 @@ class AuthService:
         hashed_password = hash_password(password)
         user = User(username=username, password=hashed_password, email=email)
         user.save()
-        return {"message": "Пользователь создан"}
+
+        access_token = create_access_token(identity=user.id)
+        refresh_token = create_refresh_token(identity=user.id)
+        return {
+            "access_token": access_token,
+            "refresh_token": refresh_token
+        }
 
     @staticmethod
     def login_user(email, password):
@@ -25,3 +32,12 @@ class AuthService:
             "access_token": access_token,
             "refresh_token": refresh_token
         }
+    
+
+@jwt.additional_claims_loader
+def add_claims_to_access_token(user):
+    return {
+        "username": user.username,
+        "email" : user.email,
+        "role": user.role
+    }
