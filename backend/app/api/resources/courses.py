@@ -1,6 +1,7 @@
 from flask_restx import Namespace, Resource, fields
 from ...services import course_service
 from flask_jwt_extended import jwt_required, get_jwt_identity
+from app.utils.security import check_access
 api = Namespace("courses", description="Управление курсами")
 
 # Модель для документации Swagger
@@ -33,6 +34,7 @@ class CourseList(Resource):
     @api.doc("Создать курс")
     @api.expect(course_model)
     @jwt_required()
+    @check_access('user')
     def post(self):
         """Создать новый курс"""
         id = get_jwt_identity()

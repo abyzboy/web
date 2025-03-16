@@ -8,16 +8,19 @@ def check_password(hashed_password, password):
 
 
 from functools import wraps
-from flask_jwt_extended import get_jwt_identity
-from flask_restx import abort
-from app.models.user import User
+from flask_jwt_extended import get_jwt
+from flask import make_response, jsonify
 
-def admin_required(fn):
-    @wraps(fn)
-    def wrapper(*args, **kwargs):
-        current_user_id = get_jwt_identity()
-        user = User.query.get(current_user_id)
-        if user.role != "admin":
-            abort(403, message="Доступ запрещен")
-        return fn(*args, **kwargs)
-    return wrapper
+def check_access(role : str):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            user_data_jwt = get_jwt()
+            if user_data_jwt["role"] == role:
+                return func(*args, **kwargs)
+            else:
+                response = make_response(jsonify({"message" : "Доступ запрещён"}))
+                response.status = 403
+                return response
+        return wrapper
+    return decorator

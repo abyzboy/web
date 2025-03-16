@@ -13,8 +13,8 @@ class AuthService:
         user = User(username=username, password=hashed_password, email=email)
         user.save()
 
-        access_token = create_access_token(identity=user.id)
-        refresh_token = create_refresh_token(identity=user.id)
+        access_token = create_access_token(identity=user)
+        refresh_token = create_refresh_token(identity=user)
         return {
             "access_token": access_token,
             "refresh_token": refresh_token
@@ -26,16 +26,19 @@ class AuthService:
         if not user or not check_password(user.password, password):
             return {"message": "Неверные учетные данные"}, 401
         
-        access_token = create_access_token(identity=user.id)
-        refresh_token = create_refresh_token(identity=user.id)
+        access_token = create_access_token(identity=user)
+        refresh_token = create_refresh_token(identity=user)
         return {
             "access_token": access_token,
             "refresh_token": refresh_token
         }
-    
+
+@jwt.user_identity_loader
+def user_identity_lookup(user):
+    return user.id
 
 @jwt.additional_claims_loader
-def add_claims_to_access_token(user):
+def add_claims_to_access_token(user : User):
     return {
         "username": user.username,
         "email" : user.email,
