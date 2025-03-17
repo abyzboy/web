@@ -1,6 +1,7 @@
 from flask_restx import Namespace, Resource, fields
 from ...services import course_service
 from flask_jwt_extended import jwt_required, get_jwt_identity
+from app.utils.security import check_access
 api = Namespace("courses", description="Управление курсами")
 
 # Модель для документации Swagger
@@ -10,6 +11,18 @@ course_model = api.model("Course", {
     "description": fields.String(required=True),
     "author_id": fields.Integer(readonly=True)
 })
+
+user_model = api.model("UserIdModel", {
+    'id': fields.Integer()
+})
+
+@api.route("/<int:course_id>/users")
+class CourseUsers(Resource):
+    @api.expect(user_model)
+    def post(self, course_id):
+        """Добавить пользователя на курс"""
+        user_id = api.payload["id"]
+        return course_service.add_user(user_id, course_id)
 
 @api.route("/")
 class CourseList(Resource):
@@ -21,6 +34,7 @@ class CourseList(Resource):
     @api.doc("Создать курс")
     @api.expect(course_model)
     @jwt_required()
+    @check_access('user')
     def post(self):
         """Создать новый курс"""
         id = get_jwt_identity()
@@ -41,3 +55,11 @@ class CourseDetail(Resource):
     def delete(self, course_id):
         """Удалить курс"""
         return course_service.delete_course(course_id)
+    
+    @api.doc("Изменить курс")
+    @api.expect(course_model)
+    @jwt_required()
+    def put(self, course_id):
+        title = api.payload["title"]
+        description = api.payload["description"]
+        return course_service.put_course(course_id, title, description)

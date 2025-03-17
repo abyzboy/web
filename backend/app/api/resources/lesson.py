@@ -17,7 +17,7 @@ class LessonList(Resource):
         """Получить все уроки"""
         return lesson_service.get_all_lessons()
 
-    @api.doc("Создать курс")
+    @api.doc("Создать новый урок")
     @api.expect(lesson_model)
     @jwt_required()
     def post(self):
@@ -39,6 +39,3 @@ class LessonDetail(Resource):
     def delete(self, lesson_id):
         """Удалить урок"""
         return lesson_service.delete_lesson(lesson_id)
-
-
-

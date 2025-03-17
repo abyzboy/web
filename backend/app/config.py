@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Config:
-    JWT_SECRET_KEY = os.environ.get('SECRET_KEY')  # Секретный ключ (должен быть сложным!)
+    JWT_SECRET_KEY = os.environ.get('SECRET_KEY')  # Секретный ключ
     JWT_ACCESS_TOKEN_EXPIRES = 36000 
     JWT_TOKEN_LOCATION = ["headers"]      # Токен ищется в заголовках
     JWT_HEADER_NAME = "Authorization"    # Название заголовка

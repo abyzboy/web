@@ -16,5 +16,7 @@ class Course(db.Model):
         db.session.commit()
     
     def delete(self):
+        for lesson in self.lessons:
+            db.session.delete(lesson)
         db.session.delete(self)
         db.session.commit()

@@ -1,11 +1,15 @@
 from app.models.lesson import Lesson
 from app.models.video import Video
 from app.models.course import Course
+from app.schemas.video_schema import VideoSchema
 from ..schemas.lesson_schema import LessonSchema
+from ..extensions import db
 from flask import jsonify, make_response
 
 schema = LessonSchema()
 schemas = LessonSchema(many=True)
+schemas_videos = VideoSchema(many=True)
+
 
 def get_all_lessons() -> list[Lesson]:
     response = make_response(jsonify(schemas.dump(Lesson.query.all())))
@@ -43,7 +47,6 @@ def create_lesson(course_id :int, title : str) -> str:
     try:
         lesson : Lesson = Lesson(course_id=course_id, title=title)
         lesson.create()
-        course.lessons.append(lesson)
         response = make_response(jsonify({"msg": "Урок был создан"}))
         response.status_code = 200
     except Exception as e:
@@ -52,5 +55,24 @@ def create_lesson(course_id :int, title : str) -> str:
     return response
 
 
-def add_video(video, lesson : Lesson) -> None:
-    lesson.videos.append(video)
+def add_video(id_video : int, id_lesson : int) -> None:
+    try:
+        video : Video = Video.query.get_or_404(id_video)
+        lesson : Lesson = Lesson.query.get_or_404(id_lesson)
+        lesson.videos.append(video)
+        db.session.commit()
+        response = make_response(jsonify({"msg": "Урок добавлен"}))
+        response.status_code = 200
+    except Exception as e:
+        response = make_response(jsonify({"msg" : f"{e}"}))
+        response.status_code = 404
+    return response
+
+
+def get_videos(id : int):
+    try:
+        lesson : Lesson = Lesson.query.get_or_404(id)
+        response = make_response(jsonify(schemas_videos.dump(lesson.videos)))
+    except:
+        print('error')
+    return response

@@ -4,7 +4,7 @@ from app.api.resources.users import api as users_ns      # Импорт Namespac
 from app.api.resources.auth import api as auth_ns        # Импорт Namespace для аутентификации
 from app.api.resources.test import api as test_ns
 from app.api.resources.lesson import api as lesson_ns
-
+from app.api.resources.video import api as video_ns
 # Создание объекта Api с настройками
 api = Api(
     version="1.0",                  # Версия API
@@ -28,3 +28,4 @@ api.add_namespace(users_ns, path="/api/v1/users")       # Пользовател
 api.add_namespace(auth_ns, path="/api/v1/auth")         # Аутентификация
 api.add_namespace(test_ns, path="/api/v1/test")
 api.add_namespace(lesson_ns, path='/api/v1/lessons')
+api.add_namespace(video_ns, path='/api/v1/videos')
