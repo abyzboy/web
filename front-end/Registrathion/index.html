@@ -12,19 +12,19 @@
 	<div class="form-container sign-up-container">
 		<form action="#">
 			<h1>Регистрация</h1>
-			<input type="text" placeholder="Username"  id="Username"/>
-			<input type="email" placeholder="Email"  id="Email"/>
-			<input type="password" placeholder="Password" id="Password"/>
+			<input type="text" placeholder="Введите имя"  id="Username"/>
+			<input type="email" placeholder="Введите email"  id="Email"/>
+			<input type="password" placeholder="Введите пароль" id="Password"/>
 			<button onclick="Registrathion(Username.value, Email.value, Password.value)">Зарегистроваться</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
 		<form action="#">
 			<h1>Авторизация</h1>
-			<input type="email" placeholder="Email" id="Email"/>
-			<input type="password" placeholder="Password" id="Password"/>
+			<input type="email" id="email" placeholder="Введите email">
+			<input type="password" id="password" placeholder="Введите пароль">
 			<a href="#">Забыли пароль?</a>
-			<button onclick="goToCourses()">Вход</button>
+			<button onclick="authorizeUser()">Вход</button>
 		</form>
 	</div>
 	<div class="overlay-container">

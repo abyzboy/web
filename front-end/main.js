@@ -7,7 +7,7 @@ dropdownToggle.addEventListener("click", () => { // Изменено назва�
 
 // Закрываем выпадающее меню при клике вне его
 window.addEventListener("click", (event) => {
-  if (!dropdownToggle.contains(event.target)) { // Проверяем, что клик был вне dropdownToggle
+  if (!dropdownToggle.contains(event.targget)) { // Проверяем, что клик был вне dropdownToggle
     if (dropdownMenu.classList.contains('show')) {
       dropdownMenu.classList.remove('show');
     }
