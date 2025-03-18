@@ -24,6 +24,12 @@ class CourseUsers(Resource):
         user_id = api.payload["id"]
         return course_service.add_user(user_id, course_id)
 
+@api.route('/<int:user_id>')
+class CoursesUser(Resource):
+    @api.doc("Получить курсы пользователя")
+    def get(self, user_id): 
+        return course_service.get_course_by_user(user_id)
+
 @api.route("/")
 class CourseList(Resource):
     @api.doc("Список курсов")
@@ -63,3 +69,4 @@ class CourseDetail(Resource):
         title = api.payload["title"]
         description = api.payload["description"]
         return course_service.put_course(course_id, title, description)
+    

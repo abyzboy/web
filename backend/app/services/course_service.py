@@ -77,3 +77,13 @@ def put_course(id, title, description):
         response = make_response(jsonify({"msg": "Курс не был найден"}))
         response.status_code = 404
     return response
+
+def get_course_by_user(user_id):
+    try:
+        user : User = User.query.get_or_404(user_id)
+        response = make_response(jsonify(schemas.dump(user.courses)))
+        response.status_code = 200
+    except:
+        response = make_response(jsonify({'msg': 'Error not found user'}))
+        response.status = 404
+    return response
